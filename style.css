@@ -1,0 +1,107 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+}
+
+body {
+  background-image: url(assets/background.jpg);
+  background-size: 100vw 100vh;
+
+  min-height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: inherit;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 2.125rem;
+  height: 25vh;
+  width: 100%;
+  text-align: center;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.search input[type="text"] {
+  height: 3rem;
+  width: 50%;
+  border-radius: 2rem;
+  border: none;
+  outline: none;
+  padding-left: 1.5rem;
+  font-size: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.search input[type="text"]:focus {
+  outline: 2px solid rgba(0, 0, 0, 0.445);
+}
+
+.weather-data-container {
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  justify-content: space-around;
+  font-weight: 900;
+}
+.today-forcast h3 {
+  font-size: 2rem;
+}
+
+.today-forcast h1 {
+  font-size: 3rem;
+}
+
+.today-forcast h4 {
+  font-size: 1.5rem;
+}
+
+.weekly-forcast-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 100%;
+}
+
+.weather-card,
+.weather-card-today {
+  border: 2px solid white;
+  border-radius: 2rem;
+  padding: 1rem;
+}
+
+.weather-card {
+}
+
+.weather-card-today {
+  font-size: 2rem;
+}
+
+.condition-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
