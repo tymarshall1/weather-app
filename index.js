@@ -1,40 +1,40 @@
 const addTodayCard = (weatherData) => {
-  const weatherContainer = document.querySelector(".today-forcast");
-
-  console.log(weatherData);
-  const weatherCardToday = document.createElement("div");
-  weatherCardToday.classList.add("weather-card-today");
-
-  const conditionContainer = document.createElement("div");
-  conditionContainer.classList.add("condition-container");
-
-  const condition = document.createElement("h1");
-  condition.textContent = weatherData.current.condition.text;
-
-  const conditionImg = document.createElement("img");
-  conditionImg.src = weatherData.current.condition.icon;
-
-  const city = document.createElement("h4");
-  city.textContent = weatherData.location.name;
-
-  const date = document.createElement("h4");
   const dateObj = new Date(weatherData.location.localtime);
-  date.textContent = `${
+  console.log(weatherData);
+
+  document.getElementById("condition").textContent =
+    weatherData.current.condition.text;
+
+  document.getElementById("conditionImg").src =
+    weatherData.current.condition.icon;
+
+  document.getElementById("city").textContent = weatherData.location.name;
+
+  document.getElementById("date").textContent = `${
     dateObj.getMonth() + 1
-  }/${dateObj.getDate()}/${dateObj.getFullYear()} ${dateObj.getHours()}:${dateObj.getMinutes()}`;
+  }/${dateObj.getDate()}/${dateObj.getFullYear()}`;
 
-  const temp = document.createElement("h3");
-  temp.textContent = `${weatherData.current.temp_f}F`;
+  document.getElementById(
+    "time"
+  ).textContent = `${dateObj.getHours()}:${dateObj.getMinutes()}`;
 
-  conditionContainer.appendChild(condition);
-  conditionContainer.appendChild(conditionImg);
+  document.getElementById(
+    "temp"
+  ).textContent = `${weatherData.current.temp_f}F`;
 
-  weatherCardToday.appendChild(conditionContainer);
-  weatherCardToday.appendChild(city);
-  weatherCardToday.appendChild(date);
-  weatherCardToday.appendChild(temp);
+  document.getElementById(
+    "feelsLike"
+  ).textContent = `${weatherData.current.feelslike_f} F`;
 
-  weatherContainer.appendChild(weatherCardToday);
+  document.getElementById(
+    "humidity"
+  ).textContent = `${weatherData.current.humidity} %`;
+
+  document.getElementById("RainChance").textContent = "x";
+
+  document.getElementById(
+    "WindSpeed"
+  ).textContent = `${weatherData.current.wind_mph} mph`;
 };
 
 const weekCard = () => {};
@@ -49,4 +49,4 @@ async function getWeatherDataForCity(city) {
   return weatherJson;
 }
 
-getWeatherDataForCity("Bear DE").then((data) => addTodayCard(data));
+getWeatherDataForCity("england").then((data) => addTodayCard(data));

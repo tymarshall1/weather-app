@@ -1,7 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Roboto Condensed", sans-serif;
 }
 
 :root {
@@ -41,13 +44,14 @@ header {
 
 .search input[type="text"] {
   height: 3rem;
-  width: 50%;
+  width: 30%;
   border-radius: 2rem;
   border: none;
   outline: none;
   padding-left: 1.5rem;
   font-size: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
 }
 
 .search input[type="text"]:focus {
@@ -57,24 +61,60 @@ header {
 .weather-data-container {
   color: white;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   flex: 1;
   width: 100%;
   justify-content: space-around;
-  font-weight: 900;
 }
-.today-forcast h3 {
+
+.today-forcast-container {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 2px 0px,
+    rgba(255, 255, 255, 0.15) 0px 2px 6px 2px;
+  border: 2px solid white;
+  border-radius: 2rem;
+  padding: 2rem;
   font-size: 2rem;
+  flex-wrap: wrap;
 }
 
-.today-forcast h1 {
-  font-size: 3rem;
+.today-forcast-container h1 {
+  font-weight: 800;
 }
 
-.today-forcast h4 {
-  font-size: 1.5rem;
+.today-forcast-container h2 {
+  font-weight: 500;
+}
+
+.today-forcast-container h3 {
+  font-weight: 300;
+}
+
+.today-forcast-container h4 {
+  font-weight: 200;
+  font-size: 1.3rem;
+}
+
+.weather-data-container-secondary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-size: 1.35rem;
+}
+
+.weather-data-container-secondary h4 {
+  font-weight: 600;
+}
+
+.weather-data-container-secondary h5 {
+  font-weight: 400;
+}
+.weather-data-container-secondary img {
+  height: 30px;
+  width: 30px;
 }
 
 .weekly-forcast-container {
@@ -82,26 +122,26 @@ header {
   justify-content: space-evenly;
   align-items: center;
   flex-wrap: wrap;
-
   width: 100%;
 }
 
-.weather-card,
-.weather-card-today {
+.weather-card {
   border: 2px solid white;
   border-radius: 2rem;
   padding: 1rem;
-}
-
-.weather-card {
-}
-
-.weather-card-today {
-  font-size: 2rem;
 }
 
 .condition-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.feels-like,
+.rain-chance,
+.humidity,
+.wind-speed {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
