@@ -53,7 +53,10 @@ const weekCard = (weatherData) => {
   card.classList.add("weather-card");
 
   const day = document.createElement("h2");
-  day.textContent = weekdays[new Date(weatherData.date).getDay()];
+  const parts = weatherData.date.split("-");
+  const formattedDate = `20${parts[0]}-${parts[1]}-${parts[2]}`;
+  const dateObject = new Date(formattedDate);
+  day.textContent = weekdays[dateObject.getDay()];
 
   const tempHigh = document.createElement("h1");
   tempHigh.textContent = `${weatherData.day.maxtemp_f} °F`;
