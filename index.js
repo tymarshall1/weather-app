@@ -19,11 +19,11 @@ const addTodayCard = (weatherData) => {
 
   document.getElementById(
     "temp"
-  ).textContent = `${weatherData.current.temp_f} F`;
+  ).textContent = `${weatherData.current.temp_f} °F `;
 
   document.getElementById(
     "feelsLike"
-  ).textContent = `${weatherData.current.feelslike_f} F`;
+  ).textContent = `${weatherData.current.feelslike_f} °F`;
 
   document.getElementById(
     "humidity"
@@ -56,10 +56,10 @@ const weekCard = (weatherData) => {
   day.textContent = weekdays[new Date(weatherData.date).getDay()];
 
   const tempHigh = document.createElement("h1");
-  tempHigh.textContent = `${weatherData.day.maxtemp_f} F`;
+  tempHigh.textContent = `${weatherData.day.maxtemp_f} °F`;
 
   const tempLow = document.createElement("h4");
-  tempLow.textContent = `${weatherData.day.mintemp_f} F`;
+  tempLow.textContent = `${weatherData.day.mintemp_f} °F`;
 
   const icon = document.createElement("img");
   icon.src = weatherData.day.condition.icon;
@@ -101,7 +101,7 @@ const clearSearchError = () => {
 
 const handleSearchError = () => {
   document.getElementById("error").textContent =
-    "Couldn't find City. Try something like Buffalo, New York or Even Simply Buffalo";
+    "Couldn't find City. Try something like <Buffalo, New York>, <Buffalo>, or <Zip Code>.";
 };
 
 const handleSearch = () => {
