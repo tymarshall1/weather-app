@@ -60,14 +60,6 @@ header {
   width: 100%;
 }
 
-.search input[type="text"]::placeholder {
-  color: white;
-}
-
-.search input[type="text"]:focus {
-  /* outline: 2px solid rgba(0, 0, 0, 0.445); */
-}
-
 .weather-data-container {
   color: white;
   display: flex;
@@ -168,4 +160,9 @@ header {
   display: flex;
   gap: 10px;
   align-items: center;
+}
+
+.error {
+  color: red;
+  text-align: center;
 }

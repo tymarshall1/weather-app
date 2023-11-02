@@ -10,15 +10,10 @@
     <div class="main-container">
       <header><h1>Find the Weather in Your City!</h1></header>
       <div class="search">
-        <input
-          type="text"
-          name="city"
-          id="cityInp"
-          placeholder="Enter a City..."
-        />
+        <input type="text" name="city" id="cityInp" value="Bear, Delaware" />
         <img id="searchIcon" src="/assets/search.svg" alt="search icon" />
       </div>
-
+      <div id="error" class="error"></div>
       <div class="weather-data-container">
         <div class="today-forcast-container">
           <div class="weather-card-today">
@@ -64,7 +59,6 @@
             </div>
           </div>
         </div>
-
         <div class="weekly-forcast-container"></div>
       </div>
     </div>

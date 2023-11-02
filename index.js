@@ -89,20 +89,30 @@ async function getForcastForCity(city, daysOut) {
 }
 
 const populateDefaultData = () => {
-  getForcastForCity("Bear DE", 5).then((data) => {
+  getForcastForCity("Bear, Delaware", 5).then((data) => {
     addTodayCard(data);
     addWeekCards(data.forecast.forecastday);
   });
 };
 
+const clearSearchError = () => {
+  document.getElementById("error").textContent = "";
+};
+
+const handleSearchError = () => {
+  document.getElementById("error").textContent =
+    "Couldn't find City. Try something like Buffalo, New York or Even Simply Buffalo";
+};
+
 const handleSearch = () => {
+  clearSearchError();
   document.querySelector(".weekly-forcast-container").innerHTML = "";
-  getForcastForCity(document.getElementById("cityInp").value, 5).then(
-    (data) => {
+  getForcastForCity(document.getElementById("cityInp").value, 5)
+    .then((data) => {
       addTodayCard(data);
       addWeekCards(data.forecast.forecastday);
-    }
-  );
+    })
+    .catch(() => handleSearchError());
 };
 
 document
