@@ -21,6 +21,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 15px;
   min-height: inherit;
 }
 
@@ -76,9 +77,10 @@ header {
     rgba(255, 255, 255, 0.15) 0px 2px 6px 2px;
   border: 2px solid white;
   border-radius: 2rem;
-  padding: 2rem;
+  padding: 3rem;
   font-size: 2rem;
   flex-wrap: wrap;
+  gap: 50px;
 }
 
 .today-forcast-container h1 {
@@ -106,7 +108,7 @@ header {
 }
 
 .weather-data-container-secondary h4 {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .weather-data-container-secondary h5 {
@@ -126,9 +128,22 @@ header {
 }
 
 .weather-card {
-  border: 2px solid white;
-  border-radius: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
   padding: 1rem;
+}
+
+.weather-card h1 {
+  font-weight: 800;
+}
+.weather-card h2 {
+  font-weight: 400;
+}
+.weather-card h4 {
+  font-weight: 300;
 }
 
 .condition-container {

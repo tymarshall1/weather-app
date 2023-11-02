@@ -20,7 +20,7 @@ const addTodayCard = (weatherData) => {
 
   document.getElementById(
     "temp"
-  ).textContent = `${weatherData.current.temp_f}F`;
+  ).textContent = `${weatherData.current.temp_f} F`;
 
   document.getElementById(
     "feelsLike"
@@ -30,23 +30,66 @@ const addTodayCard = (weatherData) => {
     "humidity"
   ).textContent = `${weatherData.current.humidity} %`;
 
-  document.getElementById("RainChance").textContent = "x";
+  document.getElementById(
+    "RainChance"
+  ).textContent = `${weatherData.forecast.forecastday[0].day.daily_chance_of_rain} %`;
 
   document.getElementById(
     "WindSpeed"
   ).textContent = `${weatherData.current.wind_mph} mph`;
 };
 
-const weekCard = () => {};
+const weekCard = (weatherData) => {
+  const weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
-const addWeekCards = () => {};
+  const card = document.createElement("div");
+  card.classList.add("weather-card");
 
-async function getWeatherDataForCity(city) {
+  const day = document.createElement("h2");
+  day.textContent = weekdays[new Date(weatherData.date).getDay()];
+
+  const tempHigh = document.createElement("h1");
+  tempHigh.textContent = `${weatherData.day.maxtemp_f} F`;
+
+  const tempLow = document.createElement("h4");
+  tempLow.textContent = `${weatherData.day.mintemp_f} F`;
+
+  const icon = document.createElement("img");
+  icon.src = weatherData.day.condition.icon;
+
+  card.appendChild(day);
+  card.appendChild(tempHigh);
+  card.appendChild(tempLow);
+  card.appendChild(icon);
+  return card;
+};
+
+const addWeekCards = (forcastArray) => {
+  const weeklyForcastContainer = document.querySelector(
+    ".weekly-forcast-container"
+  );
+  forcastArray.forEach((day) =>
+    weeklyForcastContainer.appendChild(weekCard(day))
+  );
+};
+
+async function getForcastForCity(city, daysOut) {
   const key = "5f00a6e30df84fa4961200459233110";
-  const url = `http://api.weatherapi.com/v1/current.json?q=${city}&key=${key}`;
+  const url = `http://api.weatherapi.com/v1/forecast.json?q=${city}&days=${daysOut}&key=${key}`;
   const response = await fetch(url);
   const weatherJson = await response.json();
   return weatherJson;
 }
 
-getWeatherDataForCity("england").then((data) => addTodayCard(data));
+getForcastForCity("Bear DE", 5).then((data) => {
+  addTodayCard(data);
+  addWeekCards(data.forecast.forecastday);
+});
