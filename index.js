@@ -1,6 +1,5 @@
 const addTodayCard = (weatherData) => {
   const dateObj = new Date(weatherData.location.localtime);
-  console.log(weatherData);
 
   document.getElementById("condition").textContent =
     weatherData.current.condition.text;
@@ -89,7 +88,31 @@ async function getForcastForCity(city, daysOut) {
   return weatherJson;
 }
 
-getForcastForCity("Bear DE", 5).then((data) => {
-  addTodayCard(data);
-  addWeekCards(data.forecast.forecastday);
+const populateDefaultData = () => {
+  getForcastForCity("Bear DE", 5).then((data) => {
+    addTodayCard(data);
+    addWeekCards(data.forecast.forecastday);
+  });
+};
+
+const handleSearch = () => {
+  document.querySelector(".weekly-forcast-container").innerHTML = "";
+  getForcastForCity(document.getElementById("cityInp").value, 5).then(
+    (data) => {
+      addTodayCard(data);
+      addWeekCards(data.forecast.forecastday);
+    }
+  );
+};
+
+document
+  .getElementById("searchIcon")
+  .addEventListener("click", () => handleSearch());
+
+document.getElementById("cityInp").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    handleSearch();
+  }
 });
+
+populateDefaultData();
